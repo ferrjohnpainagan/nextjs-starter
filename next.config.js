@@ -4,6 +4,9 @@ const { ProvidePlugin } = require('webpack');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
   webpack: (config) => {
     config.plugins.push(
       new ProvidePlugin({
