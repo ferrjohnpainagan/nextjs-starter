@@ -17,6 +17,7 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@pages': join(__dirname, './pages'),
+      '@containers': join(__dirname, './containers'),
       '@icon': join(__dirname, './public/Icon'),
       '@image': join(__dirname, './public/images'),
       '@api': join(__dirname, './src/api'),

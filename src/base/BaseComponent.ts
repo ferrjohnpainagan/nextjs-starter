@@ -1,7 +1,6 @@
 import { useAuth } from '@hooks/Authentication/AuthenticationHook';
 import { useTranslate } from '@hooks/Translate/TranslateHook';
 import { useAppDispatch } from '@redux/hooks';
-import { openLoginTrigger } from '@redux/slices/login/login';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
@@ -51,20 +50,6 @@ export function useBaseComponent<
       authenticatedCallback?.();
     } else {
       notAuthenticatedCallback?.();
-
-      if (showLoginModal) {
-        dispatch(
-          openLoginTrigger({
-            open: true,
-            afterLogin: (isLogin, isNew) => {
-              afterLoginCallback?.({
-                isLogin,
-                isNew,
-              });
-            },
-          }),
-        );
-      }
     }
   };
 
