@@ -1,8 +1,4 @@
-import { baseApiQuery } from '@base/Api/query/BaseApiQuery';
-import {
-  BaseQueryArg,
-  BaseQueryFn,
-} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import { BaseQueryFn } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 import { IRequestOption } from '@utils/Request/RequestType';
 
