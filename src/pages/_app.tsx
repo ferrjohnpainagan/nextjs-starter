@@ -1,4 +1,4 @@
-import store, { wrapper } from '@redux/store';
+import { wrapper } from '@redux/store';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
@@ -6,7 +6,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import '../styles/globals.css';
 
-export function App({ Component, pageProps }: AppProps) {
+export function App({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
   let persistor = persistStore(store);
 
   return (
