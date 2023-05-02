@@ -1,5 +1,5 @@
-import axios, { AxiosInstance } from 'axios';
-import { IAuthenticationToken } from '../../base/BaseInterface';
+import { IAuthenticationToken } from '@base/BaseInterface';
+import axios from 'axios';
 import {
   IErrorResponse,
   IErrorResponseDetail,
@@ -7,34 +7,22 @@ import {
   IResponse,
 } from './RequestType';
 
-export class Request {
-  private client: AxiosInstance;
+export const useRequest = (preUrl = '') => {
+  const baseURL = process.env.BASE_URL ?? '';
+  const client = axios.create({
+    baseURL: `${baseURL}${preUrl}`,
+  });
 
-  // private verificationDataManager: VerificationDataManager;
-
-  // private loading: Loading;
-
-  public constructor(preUrl: string = '') {
-    const baseURL: string = process.env.BASE_URL ?? '';
-
-    this.client = axios.create({
-      baseURL: `${baseURL}${preUrl}`,
-    });
-
-    // this.verificationDataManager = new VerificationDataManager();
-    // this.loading = new Loading();
-  }
-
-  private successHandler<T>(
+  const successHandler = <T>(
     response: IResponse<T>,
     successMessage?: string,
-  ): void {
+  ): void => {
     if (successMessage) {
       console.log(successMessage);
     }
-  }
+  };
 
-  private errorHandler(error: IErrorResponse, errorMessage?: string): void {
+  const errorHandler = (error: IErrorResponse, errorMessage?: string): void => {
     const {
       data: { detail },
     } = error.response;
@@ -48,9 +36,9 @@ export class Request {
         }
       });
     }
-  }
+  };
 
-  private async checkAccessTokenValidation(): Promise<string> {
+  const checkAccessTokenValidation = async (): Promise<string> => {
     const { access_token: accessToken, refresh_token: refreshToken } =
       {} as any;
 
@@ -61,7 +49,7 @@ export class Request {
 
       const authorization = `Bearer ${accessToken}`;
 
-      await this.sendRequest({
+      await sendRequest({
         url: '/auth/test-token',
         method: 'POST',
         sendAuthorization: false,
@@ -73,7 +61,7 @@ export class Request {
 
       return accessToken;
     } catch (error: any) {
-      const { data: newTokens } = await this.sendRequest<
+      const { data: newTokens } = await sendRequest<
         IAuthenticationToken,
         string
       >({
@@ -84,13 +72,13 @@ export class Request {
         autoErrorHandler: false,
       });
 
-      // this.verificationDataManager.setVerificationData(newTokens);
+      // setVerificationData(newTokens);
 
       return newTokens.access_token;
     }
-  }
+  };
 
-  public async sendRequest<T, D = any>({
+  const sendRequest = async <T, D = any>({
     headers,
     autoSuccessHandler = true,
     autoErrorHandler = true,
@@ -101,23 +89,17 @@ export class Request {
     loadingMessage,
     accessToken = '',
     ...restOptions
-  }: IRequestOption<D>): Promise<IResponse<T>> {
+  }: IRequestOption<D>): Promise<IResponse<T>> => {
     let authorization: string = '';
 
     if (sendAuthorization) {
-      // const accessToken = await this.checkAccessTokenValidation();
-
       if (accessToken) {
         authorization = `Bearer ${accessToken}`;
       }
     }
 
     try {
-      // if (showLoading) {
-      //     this.loading.show(loadingMessage);
-      // }
-
-      const response: IResponse<T> = await this.client({
+      const response: IResponse<T> = await client({
         headers: {
           Authorization: authorization,
           ...headers,
@@ -126,24 +108,18 @@ export class Request {
       });
 
       if (autoSuccessHandler) {
-        this.successHandler<T>(response, successMessage);
+        successHandler<T>(response, successMessage);
       }
-
-      // if (showLoading) {
-      //     this.loading.hide();
-      // }
 
       return response;
     } catch (error: any) {
       if (autoErrorHandler) {
-        this.errorHandler(error, errorMessage);
+        errorHandler(error, errorMessage);
       }
-
-      // if (showLoading) {
-      //     this.loading.hide();
-      // }
 
       throw error;
     }
-  }
-}
+  };
+
+  return { sendRequest };
+};
