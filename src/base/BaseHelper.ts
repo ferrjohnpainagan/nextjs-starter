@@ -1,5 +1,5 @@
 import { IBaseHelperReturnType } from './BaseInterface';
 
-export function useBaseHelper(): IBaseHelperReturnType {
+export const useBaseHelper = (): IBaseHelperReturnType => {
   return {};
-}
+};

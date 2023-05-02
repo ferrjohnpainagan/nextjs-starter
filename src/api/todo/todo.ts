@@ -1,10 +1,10 @@
 import { apiQuery } from '@api/Query';
-import { baseApiQuery } from '@base/Api/query/BaseApiQuery';
+import { CreateBaseApiQuery } from '@base/Api/query/BaseApiQuery';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  baseQuery: baseApiQuery({
+  baseQuery: CreateBaseApiQuery({
     preUrl: '/todos',
   }),
   tagTypes: ['todoApi'],

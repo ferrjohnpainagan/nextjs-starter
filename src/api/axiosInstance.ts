@@ -1,13 +1,11 @@
 import axios from 'axios';
-import axiosConfig from './axiosConfig';
+import { config } from './axiosConfig';
 
 const BaseApi = () => {
-  const apiCore = axios.create(axiosConfig);
-  const basePath = axiosConfig.baseURL;
+  const apiCore = axios.create(config);
+  const basePath = config.baseURL;
 
   return { apiCore, basePath };
 };
 
-const baseApi = BaseApi();
-
-export default baseApi;
+export const baseApi = BaseApi();

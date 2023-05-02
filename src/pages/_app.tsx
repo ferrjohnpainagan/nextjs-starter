@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import '../styles/globals.css';
 
-export function App({ Component, ...rest }: AppProps) {
+export const App = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { pageProps } = props;
   let persistor = persistStore(store);
@@ -18,6 +18,6 @@ export function App({ Component, ...rest }: AppProps) {
       </PersistGate>
     </Provider>
   );
-}
+};
 
 export default wrapper.withRedux(App);

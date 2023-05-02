@@ -3,6 +3,7 @@ import { useTranslate } from '@hooks/Translate/TranslateHook';
 import { useAppDispatch } from '@redux/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+
 import {
   IBaseComponentParams,
   IBaseComponentReturnType,
@@ -11,11 +12,13 @@ import {
   ICheckAuthenticationParams,
 } from './BaseInterface';
 
-export function useBaseComponent<
+export const useBaseComponent = <
   P extends IBaseVoidProps = {},
   S extends IBaseState = {},
   H = any,
->(params?: IBaseComponentParams<P, S>): IBaseComponentReturnType<S, H> {
+>(
+  params?: IBaseComponentParams<P, S>,
+): IBaseComponentReturnType<S, H> => {
   const {
     props = {} as P,
     initialState = {} as S,
@@ -26,7 +29,7 @@ export function useBaseComponent<
   const [state, pureSetState] = useState<S>(initialState);
   const isAuthenticated: boolean = useAuth();
   const dispatch = useAppDispatch();
-  const translate = chain ? useTranslate(chain) : (): string => '';
+  const translate = useTranslate(chain ?? '');
   const router = useRouter();
 
   const currency: string = process.env.CURRENCY ?? 'ریال';
@@ -77,4 +80,4 @@ export function useBaseComponent<
     pureSetState,
     dispatch,
   };
-}
+};

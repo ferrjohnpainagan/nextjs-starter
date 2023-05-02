@@ -6,24 +6,27 @@ const initialState: IAuthenticationSliceState = {
   accessToken: null,
 };
 
-const { actions, reducer } = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
   reducers: {
-    updateAuthState(state, action: PayloadAction<IAuthenticationSliceState>) {
+    updateAuthState: (
+      state,
+      action: PayloadAction<IAuthenticationSliceState>,
+    ) => {
       state.accessToken = action.payload.accessToken;
       state.user = action.payload.user;
     },
-    updateUser(state, action: PayloadAction<IUser>) {
+    updateUser: (state, action: PayloadAction<IUser>) => {
       state.user = action.payload;
     },
-    logoutUser(state) {
+    logoutUser: (state) => {
       state.user = initialState.user;
       state.accessToken = initialState.accessToken;
     },
   },
 });
 
-export const { updateAuthState, logoutUser, updateUser } = actions;
+export const { updateAuthState, logoutUser, updateUser } = authSlice.actions;
 
-export default reducer;
+export const auth = authSlice.reducer;
