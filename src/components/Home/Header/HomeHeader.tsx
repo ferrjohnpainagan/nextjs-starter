@@ -1,3 +1,4 @@
+import { useBaseComponent } from '@base/BaseComponent';
 import { ThemeSwitcher } from '@components/Shared/ThemeSwitcher/ThemeSwitcher';
 import Image from 'next/image';
 import {
@@ -9,6 +10,8 @@ import {
 } from './HomeHeaderStyle';
 
 export const HomeHeader = () => {
+  useBaseComponent();
+
   return (
     <StyledHomeHeaderWrapper>
       <StyledHomeHeaderParagraph>
