@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["jest-dom", "import", "prefer-arrow"],
+  "extends": [
+    "next",
+    "prettier",
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "import/no-default-export": "error",
+    "prefer-arrow/prefer-arrow-functions": "error"
+  }
 }
