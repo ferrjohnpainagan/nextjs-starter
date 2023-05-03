@@ -1,34 +1,36 @@
 import { useBaseComponent } from '@base/BaseComponent';
 import { useTheme } from 'next-themes';
-import { useEffect } from 'react';
+import { useThemeSwitcherHelper } from './ThemeSwitcherHelper';
+import {
+  StyledThemeSwitcherButton,
+  StyledThemeSwitcherToggleWrapper,
+  StyledThemeSwitcherWrapper,
+} from './ThemeSwitcherStyle';
 import { IThemeSwitcherProps, IThemeSwitcherState } from './ThemeSwitcherType';
 
 export const ThemeSwitcher = (props: IThemeSwitcherProps) => {
-  const { theme, setTheme } = useTheme();
-  const { state, setState } = useBaseComponent<
+  const { state, setState, helper } = useBaseComponent<
     IThemeSwitcherProps,
-    IThemeSwitcherState
+    IThemeSwitcherState,
+    ReturnType<typeof useThemeSwitcherHelper>
   >({
     props,
-    initialState: { mounted: false },
+    helperHook: useThemeSwitcherHelper,
   });
-  const { mounted } = state;
+  const { themeToggleHandler } = helper;
+  const { theme } = useTheme();
 
-  useEffect(() => {
-    setState({ mounted: true });
-  }, []);
-
-  if (!mounted) return null;
-  const currentTheme = theme;
   return (
-    <select
-      onChange={(e) => {
-        console.log(e.target.value);
-        setTheme(e.target.value);
-      }}
-    >
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
-    </select>
+    <StyledThemeSwitcherWrapper>
+      <span>Dark</span>
+      <StyledThemeSwitcherToggleWrapper
+        onClick={() => {
+          themeToggleHandler(theme === 'dark' ? false : true);
+        }}
+      >
+        <StyledThemeSwitcherButton isLight={theme === 'light'} />
+      </StyledThemeSwitcherToggleWrapper>
+      <span>light</span>
+    </StyledThemeSwitcherWrapper>
   );
 };

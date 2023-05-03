@@ -1,4 +1,2 @@
-export interface IThemeSwitcherState {
-  mounted: boolean;
-}
+export interface IThemeSwitcherState {}
 export interface IThemeSwitcherProps {}
