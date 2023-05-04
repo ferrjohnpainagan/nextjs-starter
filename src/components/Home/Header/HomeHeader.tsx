@@ -4,7 +4,7 @@ import {
   StyledHomeHeaderCode,
   StyledHomeHeaderLogoLink,
   StyledHomeHeaderLogoWrapper,
-  StyledHomeHeaderParagraph,
+  StyledHomeHeaderTextWrapper,
   StyledHomeHeaderWrapper,
 } from './HomeHeaderStyle';
 
@@ -13,12 +13,12 @@ export const HomeHeader = () => {
 
   return (
     <StyledHomeHeaderWrapper>
-      <StyledHomeHeaderParagraph>
+      <StyledHomeHeaderTextWrapper>
         Switch Theme: &nbsp;
         <StyledHomeHeaderCode>
           <ThemeSwitcher />
         </StyledHomeHeaderCode>
-      </StyledHomeHeaderParagraph>
+      </StyledHomeHeaderTextWrapper>
       <StyledHomeHeaderLogoWrapper>
         <StyledHomeHeaderLogoLink
           href="https://github.com/MamadKamalipour"

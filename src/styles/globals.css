@@ -9,6 +9,7 @@
 }
 
 html.dark body {
+  overflow: hidden;
   color: rgb(255, 255, 255);
   background: linear-gradient(to bottom, transparent, rgb(0, 0, 0)) rgb(0, 0, 0);
 }
@@ -17,4 +18,5 @@ body {
   color: rgb(0, 0, 0);
   background: linear-gradient(to bottom, transparent, rgb(255, 255, 255))
     rgb(214, 219, 220);
+  transition: background 300ms linear;
 }

@@ -15,7 +15,11 @@ export const App = ({ Component, ...rest }: AppProps) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider enableSystem={true} attribute="class">
+        <ThemeProvider
+          enableSystem={true}
+          defaultTheme="dark"
+          attribute="class"
+        >
           <Component {...pageProps} />
         </ThemeProvider>
       </PersistGate>

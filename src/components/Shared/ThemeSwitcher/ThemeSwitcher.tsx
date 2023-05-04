@@ -21,16 +21,18 @@ export const ThemeSwitcher = (props: IThemeSwitcherProps) => {
   const { theme } = useTheme();
 
   return (
-    <StyledThemeSwitcherWrapper>
-      <span>Dark</span>
-      <StyledThemeSwitcherToggleWrapper
-        onClick={() => {
-          themeToggleHandler(theme === 'dark' ? false : true);
-        }}
-      >
-        <StyledThemeSwitcherButton isLight={theme === 'light'} />
-      </StyledThemeSwitcherToggleWrapper>
-      <span>light</span>
-    </StyledThemeSwitcherWrapper>
+    <>
+      <StyledThemeSwitcherWrapper>
+        <span>Dark</span>
+        <StyledThemeSwitcherToggleWrapper
+          onClick={() => {
+            themeToggleHandler(theme === 'dark' ? false : true);
+          }}
+        >
+          <StyledThemeSwitcherButton isLight={theme === 'light'} />
+        </StyledThemeSwitcherToggleWrapper>
+        <span>light</span>
+      </StyledThemeSwitcherWrapper>
+    </>
   );
 };
