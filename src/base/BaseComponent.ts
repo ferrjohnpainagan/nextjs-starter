@@ -1,5 +1,4 @@
 import { useAuth } from '@hooks/Authentication/AuthenticationHook';
-import { useTranslate } from '@hooks/Translate/TranslateHook';
 import { useAppDispatch } from '@redux/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -9,7 +8,6 @@ import {
   IBaseComponentReturnType,
   IBaseState,
   IBaseVoidProps,
-  ICheckAuthenticationParams,
 } from './BaseInterface';
 
 export const useBaseComponent = <
@@ -22,17 +20,15 @@ export const useBaseComponent = <
   const {
     props = {} as P,
     initialState = {} as S,
-    chain,
     helperHook,
   } = params ?? { initialState: {} as S };
 
   const [state, pureSetState] = useState<S>(initialState);
   const isAuthenticated: boolean = useAuth();
   const dispatch = useAppDispatch();
-  const translate = useTranslate(chain ?? '');
   const router = useRouter();
 
-  const currency: string = process.env.CURRENCY ?? 'ریال';
+  const currency: string = process.env.CURRENCY ?? 'Dollar';
 
   const setState = (newState: Partial<S>) => {
     pureSetState({
@@ -41,28 +37,11 @@ export const useBaseComponent = <
     });
   };
 
-  const checkAuthentication = (params: ICheckAuthenticationParams) => {
-    const {
-      showLoginModal = true,
-      authenticatedCallback,
-      notAuthenticatedCallback,
-      afterLoginCallback,
-    } = params;
-
-    if (isAuthenticated) {
-      authenticatedCallback?.();
-    } else {
-      notAuthenticatedCallback?.();
-    }
-  };
-
   const helper = helperHook?.({
     props,
     state,
     router,
     isAuthenticated,
-    checkAuthentication,
-    translate,
     setState,
     pureSetState,
     dispatch,
@@ -74,8 +53,6 @@ export const useBaseComponent = <
     helper,
     currency,
     router,
-    checkAuthentication,
-    translate,
     setState,
     pureSetState,
     dispatch,

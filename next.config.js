@@ -14,6 +14,7 @@ const nextConfig = withPWA({
   swcMinify: true,
   env: {
     BASE_URL: process.env.BASE_URL,
+    CURRENCY: process.env.CURRENCY,
   },
   webpack: (config) => {
     config.plugins.push(
