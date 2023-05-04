@@ -35,7 +35,7 @@ class MyDocument extends Document {
   }
   render() {
     return (
-      <Html dir="ltr">
+      <Html>
         <Head>
           <base href="/" />
           <meta charSet="utf-8" />

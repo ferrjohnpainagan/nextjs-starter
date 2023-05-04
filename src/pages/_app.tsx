@@ -16,7 +16,7 @@ export const App = ({ Component, ...rest }: AppProps) => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider
-          enableSystem={true}
+          enableSystem={false}
           defaultTheme="dark"
           attribute="class"
         >
