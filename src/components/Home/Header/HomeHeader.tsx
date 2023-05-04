@@ -9,7 +9,7 @@ import {
 } from './HomeHeaderStyle';
 
 export const HomeHeader = () => {
-  useBaseComponent();
+  const { router } = useBaseComponent();
 
   return (
     <StyledHomeHeaderWrapper>
@@ -18,6 +18,7 @@ export const HomeHeader = () => {
         <StyledHomeHeaderCode>
           <ThemeSwitcher />
         </StyledHomeHeaderCode>
+        <StyledHomeHeaderCode></StyledHomeHeaderCode>
       </StyledHomeHeaderTextWrapper>
       <StyledHomeHeaderLogoWrapper>
         <StyledHomeHeaderLogoLink

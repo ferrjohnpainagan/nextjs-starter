@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
 import '../styles/globals.css';
 
@@ -27,4 +28,4 @@ export const App = ({ Component, ...rest }: AppProps) => {
   );
 };
 
-export default wrapper.withRedux(App);
+export default appWithTranslation(wrapper.withRedux(App));

@@ -1,4 +1,4 @@
-import { IAuthenticationToken } from '@base/BaseInterface';
+import { IAuthenticationToken } from '@type/global';
 import axios from 'axios';
 import {
   IErrorResponse,
