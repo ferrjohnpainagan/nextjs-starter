@@ -1,1 +1,18 @@
-{}
+{
+  "theme": {
+    "dark": "تیره",
+    "switch-theme": "تغییر تم :",
+    "light": "روشن"
+  },
+  "author": "توسط محمد جواد کمالی پور",
+  "home": {
+    "docs": "اسناد",
+    "docs-description": "جزئیات بیشتر درباره ویژگی‌ها و API Next.js را پیدا کنید.",
+    "learn": "یادگیری",
+    "learn-description": "با دوره تعاملی با Next.js با کوییزهای آموزشی آشنا شوید!",
+    "translate": "قالب ها",
+    "translate-description": "پروژه‌های مثال Next.js را بیابید و استقرار دهید.",
+    "deploy": "استقرار",
+    "deploy-description": "فوراً سایت Next.js خود را در یک URL قابل اشتراک گذاری با Vercel مستقر کنید."
+  }
+}

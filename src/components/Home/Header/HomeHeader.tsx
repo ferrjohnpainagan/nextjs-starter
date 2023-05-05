@@ -1,4 +1,5 @@
 import { useBaseComponent } from '@base/BaseComponent';
+import { LanguageSwitcher } from '@components/Shared/LanguageSwicher/LanguageSwitcher';
 import { ThemeSwitcher } from '@components/Shared/ThemeSwitcher/ThemeSwitcher';
 import {
   StyledHomeHeaderCode,
@@ -9,16 +10,19 @@ import {
 } from './HomeHeaderStyle';
 
 export const HomeHeader = () => {
-  const { router } = useBaseComponent();
-
+  const { translate } = useBaseComponent({
+    chain: 'common',
+  });
   return (
     <StyledHomeHeaderWrapper>
       <StyledHomeHeaderTextWrapper>
-        Switch Theme: &nbsp;
+        {translate('theme.switch-theme')} &nbsp;
         <StyledHomeHeaderCode>
           <ThemeSwitcher />
         </StyledHomeHeaderCode>
-        <StyledHomeHeaderCode></StyledHomeHeaderCode>
+        <StyledHomeHeaderCode>
+          <LanguageSwitcher />
+        </StyledHomeHeaderCode>
       </StyledHomeHeaderTextWrapper>
       <StyledHomeHeaderLogoWrapper>
         <StyledHomeHeaderLogoLink
@@ -26,7 +30,7 @@ export const HomeHeader = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          By MamadKamalipour
+          {translate('author')}
         </StyledHomeHeaderLogoLink>
       </StyledHomeHeaderLogoWrapper>
     </StyledHomeHeaderWrapper>

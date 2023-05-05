@@ -3,6 +3,10 @@ import { NextRouter } from 'next/router';
 import { ReactElement, ReactNode } from 'react';
 import { SetPureStateType, SetStateType } from './BaseType';
 
+export interface ITranslateFunction {
+  (key: string, stringFormatData?: string[]): string;
+}
+
 export interface IBaseProps {
   children: ReactNode | ReactElement[];
 }
@@ -32,6 +36,7 @@ export interface ICommonHelperParams<
   state: S;
   router: NextRouter;
   isAuthenticated: boolean;
+  translate: ITranslateFunction;
   setState: SetStateType<S>;
   pureSetState: SetPureStateType<S>;
   dispatch: ReturnType<typeof useAppDispatch>;
@@ -48,6 +53,7 @@ export interface IBaseComponentParams<
 > {
   props?: P;
   initialState?: S;
+  chain?: string;
   helperHook?(helperParams: ICommonHelperParams<P, S>): H;
 }
 
@@ -57,7 +63,13 @@ export interface IBaseComponentReturnType<S extends IBaseState, H> {
   helper: H;
   currency: string;
   router: NextRouter;
+  translate: ITranslateFunction;
   setState: SetStateType<S>;
   pureSetState: SetPureStateType<S>;
   dispatch: ReturnType<typeof useAppDispatch>;
+}
+
+export interface ICheckAuthenticationAfterLoginParams {
+  isLogin?: boolean;
+  isNew?: boolean;
 }

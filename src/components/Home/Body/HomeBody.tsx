@@ -10,7 +10,9 @@ import {
 } from './HomeBodyStyle';
 
 export const HomeBody = () => {
-  useBaseComponent();
+  const { translate } = useBaseComponent({
+    chain: 'common',
+  });
 
   return (
     <>
@@ -31,10 +33,10 @@ export const HomeBody = () => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            Docs <StyledCardSpan>-&gt;</StyledCardSpan>
+            {translate('home.docs')} <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
           <StyledCardParagraph>
-            Find in-depth information about Next.js features and API.
+            {translate('home.docs-description')}
           </StyledCardParagraph>
         </StyledCardWrapper>
 
@@ -44,10 +46,10 @@ export const HomeBody = () => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            Learn <StyledCardSpan>-&gt;</StyledCardSpan>
+            {translate('home.learn')} <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
           <StyledCardParagraph>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+            {translate('home.learn-description')}
           </StyledCardParagraph>
         </StyledCardWrapper>
 
@@ -57,10 +59,10 @@ export const HomeBody = () => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            Templates <StyledCardSpan>-&gt;</StyledCardSpan>
+            {translate('home.translate')} <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
           <StyledCardParagraph>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
+            {translate('home.translate-description')}
           </StyledCardParagraph>
         </StyledCardWrapper>
 
@@ -70,10 +72,10 @@ export const HomeBody = () => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            Deploy <StyledCardSpan>-&gt;</StyledCardSpan>
+            {translate('home.deploy')} <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
           <StyledCardParagraph>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            {translate('home.deploy-description')}
           </StyledCardParagraph>
         </StyledCardWrapper>
       </StyledHomeBodyCardsWrapper>

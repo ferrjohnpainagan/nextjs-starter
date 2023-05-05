@@ -3,6 +3,7 @@ import { useAppDispatch } from '@redux/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import {
   IBaseComponentParams,
   IBaseComponentReturnType,
@@ -21,12 +22,15 @@ export const useBaseComponent = <
     props = {} as P,
     initialState = {} as S,
     helperHook,
+    chain,
   } = params ?? { initialState: {} as S };
 
   const [state, pureSetState] = useState<S>(initialState);
   const isAuthenticated: boolean = useAuth();
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { t: translate } = useTranslation(chain ?? '');
+  console.log(translate('home.header'));
 
   const currency: string = process.env.CURRENCY ?? 'Dollar';
 
@@ -45,6 +49,7 @@ export const useBaseComponent = <
     setState,
     pureSetState,
     dispatch,
+    translate,
   });
 
   return {
@@ -56,5 +61,6 @@ export const useBaseComponent = <
     setState,
     pureSetState,
     dispatch,
+    translate,
   };
 };

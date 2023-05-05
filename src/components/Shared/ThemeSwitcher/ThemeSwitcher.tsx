@@ -9,13 +9,14 @@ import {
 import { IThemeSwitcherProps, IThemeSwitcherState } from './ThemeSwitcherType';
 
 export const ThemeSwitcher = (props: IThemeSwitcherProps) => {
-  const { state, setState, helper } = useBaseComponent<
+  const { helper, translate } = useBaseComponent<
     IThemeSwitcherProps,
     IThemeSwitcherState,
     ReturnType<typeof useThemeSwitcherHelper>
   >({
     props,
     helperHook: useThemeSwitcherHelper,
+    chain: 'common',
   });
   const { themeToggleHandler } = helper;
   const { theme } = useTheme();
@@ -23,7 +24,7 @@ export const ThemeSwitcher = (props: IThemeSwitcherProps) => {
   return (
     <>
       <StyledThemeSwitcherWrapper>
-        <span>Dark</span>
+        <span>{translate('theme.dark')}</span>
         <StyledThemeSwitcherToggleWrapper
           onClick={() => {
             themeToggleHandler(theme === 'dark' ? false : true);
@@ -31,7 +32,7 @@ export const ThemeSwitcher = (props: IThemeSwitcherProps) => {
         >
           <StyledThemeSwitcherButton isLight={theme === 'light'} />
         </StyledThemeSwitcherToggleWrapper>
-        <span>light</span>
+        <span>{translate('theme.light')}</span>
       </StyledThemeSwitcherWrapper>
     </>
   );
