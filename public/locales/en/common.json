@@ -4,8 +4,8 @@
     "switch-theme": "Switch Theme :",
     "light": "Light"
   },
+  "author": "By Mohammad Javad Kamalipour",
   "home": {
-    "author": "By Mohammad Javad Kamalipour",
     "docs": "Docs",
     "docs-description": "Find in-depth information about Next.js features and API.",
     "learn": "Learn",
