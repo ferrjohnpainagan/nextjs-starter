@@ -3,8 +3,6 @@ import { LanguageSwitcher } from '@components/Shared/LanguageSwicher/LanguageSwi
 import { ThemeSwitcher } from '@components/Shared/ThemeSwitcher/ThemeSwitcher';
 import {
   StyledHomeHeaderCode,
-  StyledHomeHeaderLogoLink,
-  StyledHomeHeaderLogoWrapper,
   StyledHomeHeaderTextWrapper,
   StyledHomeHeaderWrapper,
 } from './HomeHeaderStyle';
@@ -20,19 +18,12 @@ export const HomeHeader = () => {
         <StyledHomeHeaderCode>
           <ThemeSwitcher />
         </StyledHomeHeaderCode>
+      </StyledHomeHeaderTextWrapper>
+      <StyledHomeHeaderTextWrapper>
         <StyledHomeHeaderCode>
           <LanguageSwitcher />
         </StyledHomeHeaderCode>
       </StyledHomeHeaderTextWrapper>
-      <StyledHomeHeaderLogoWrapper>
-        <StyledHomeHeaderLogoLink
-          href="https://github.com/MamadKamalipour"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {translate('author')}
-        </StyledHomeHeaderLogoLink>
-      </StyledHomeHeaderLogoWrapper>
     </StyledHomeHeaderWrapper>
   );
 };

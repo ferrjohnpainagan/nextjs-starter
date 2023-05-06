@@ -1,4 +1,3 @@
-import { IAuthenticationToken } from '@type/global';
 import axios from 'axios';
 import {
   IErrorResponse,
@@ -38,46 +37,6 @@ export const useRequest = (preUrl = '') => {
     }
   };
 
-  const checkAccessTokenValidation = async (): Promise<string> => {
-    const { access_token: accessToken, refresh_token: refreshToken } =
-      {} as any;
-
-    try {
-      if (!accessToken) {
-        throw new Error('Login is required');
-      }
-
-      const authorization = `Bearer ${accessToken}`;
-
-      await sendRequest({
-        url: '/auth/test-token',
-        method: 'POST',
-        sendAuthorization: false,
-        autoErrorHandler: false,
-        headers: {
-          Authorization: authorization,
-        },
-      });
-
-      return accessToken;
-    } catch (error: any) {
-      const { data: newTokens } = await sendRequest<
-        IAuthenticationToken,
-        string
-      >({
-        url: '/auth/refresh',
-        method: 'POST',
-        data: refreshToken,
-        sendAuthorization: false,
-        autoErrorHandler: false,
-      });
-
-      // setVerificationData(newTokens);
-
-      return newTokens.access_token;
-    }
-  };
-
   const sendRequest = async <T, D = any>({
     headers,
     autoSuccessHandler = true,
@@ -106,11 +65,9 @@ export const useRequest = (preUrl = '') => {
         },
         ...restOptions,
       });
-
       if (autoSuccessHandler) {
         successHandler<T>(response, successMessage);
       }
-
       return response;
     } catch (error: any) {
       if (autoErrorHandler) {
