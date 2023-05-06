@@ -30,7 +30,6 @@ export const useBaseComponent = <
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { t: translate } = useTranslation(chain ?? '');
-  console.log(translate('home.header'));
 
   const currency: string = process.env.CURRENCY ?? 'Dollar';
 

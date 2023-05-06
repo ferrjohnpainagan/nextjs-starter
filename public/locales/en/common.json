@@ -8,11 +8,11 @@
   "home": {
     "docs": "Docs",
     "docs-description": "Find in-depth information about Next.js features and API.",
-    "learn": "Learn",
-    "learn-description": "Learn about Next.js in an interactive course with&nbsp;quizzes!",
-    "translate": "Templates",
-    "translate-description": "Discover and deploy boilerplate example Next.js&nbsp;projects.",
-    "deploy": "Deploy",
-    "deploy-description": "Instantly deploy your Next.js site to a shareable URL with Vercel."
+    "SSG": "SSG",
+    "SSG-description": "Static Site Generation",
+    "SSR": "SSR",
+    "SSR-description": "Server Side Rendering",
+    "ISR": "ISR",
+    "ISR-description": "Incremental Static Regeneration"
   }
 }
