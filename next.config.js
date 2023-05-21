@@ -1,6 +1,5 @@
 const { join } = require('path');
 const { ProvidePlugin } = require('webpack');
-const { i18n } = require('./next-i18next.config');
 
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
@@ -13,7 +12,6 @@ const withPWA = require('next-pwa')({
 const nextConfig = withPWA({
   reactStrictMode: false,
   swcMinify: true,
-  i18n,
   env: {
     BASE_URL: process.env.BASE_URL,
     CURRENCY: process.env.CURRENCY,

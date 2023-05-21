@@ -1,7 +1,5 @@
-import { useBaseComponent } from '@base/BaseComponent';
 import Image from 'next/image';
 import {
-  StyledCardParagraph,
   StyledCardSpan,
   StyledCardTitle,
   StyledCardWrapper,
@@ -11,10 +9,6 @@ import {
 import { IHomeBodyType } from './HomeBodyType';
 
 export const HomeBody = (props: IHomeBodyType) => {
-  const { translate } = useBaseComponent<IHomeBodyType>({
-    chain: 'common',
-  });
-
   return (
     <>
       <StyledHomeBodyImageWrapper>
@@ -34,11 +28,8 @@ export const HomeBody = (props: IHomeBodyType) => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            {translate('home.docs')} <StyledCardSpan>-&gt;</StyledCardSpan>
+            docs <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
-          <StyledCardParagraph>
-            {translate('home.docs-description')}
-          </StyledCardParagraph>
         </StyledCardWrapper>
 
         <StyledCardWrapper
@@ -47,11 +38,8 @@ export const HomeBody = (props: IHomeBodyType) => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            {translate('home.SSG')} <StyledCardSpan>-&gt;</StyledCardSpan>
+            SSG <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
-          <StyledCardParagraph>
-            {translate('home.SSG-description')}
-          </StyledCardParagraph>
         </StyledCardWrapper>
 
         <StyledCardWrapper
@@ -60,11 +48,8 @@ export const HomeBody = (props: IHomeBodyType) => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            {translate('home.SSR')} <StyledCardSpan>-&gt;</StyledCardSpan>
+            SSR <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
-          <StyledCardParagraph>
-            {translate('home.SSR-description')}
-          </StyledCardParagraph>
         </StyledCardWrapper>
 
         <StyledCardWrapper
@@ -73,11 +58,8 @@ export const HomeBody = (props: IHomeBodyType) => {
           rel="noopener noreferrer"
         >
           <StyledCardTitle>
-            {translate('home.ISR')} <StyledCardSpan>-&gt;</StyledCardSpan>
+            ISR <StyledCardSpan>-&gt;</StyledCardSpan>
           </StyledCardTitle>
-          <StyledCardParagraph>
-            {translate('home.ISR-description')}
-          </StyledCardParagraph>
         </StyledCardWrapper>
       </StyledHomeBodyCardsWrapper>
     </>
