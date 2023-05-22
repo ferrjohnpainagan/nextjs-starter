@@ -1,3 +1,4 @@
+import { useAppDispatch } from '@redux/hooks';
 import { NextRouter } from 'next/router';
 import { ReactElement, ReactNode } from 'react';
 import { SetPureStateType, SetStateType } from './BaseType';
@@ -34,8 +35,10 @@ export interface ICommonHelperParams<
   props: P;
   state: S;
   router: NextRouter;
+  isAuthenticated: boolean;
   setState: SetStateType<S>;
   pureSetState: SetPureStateType<S>;
+  dispatch: ReturnType<typeof useAppDispatch>;
 }
 
 export interface IBaseHelperParams {}
@@ -57,8 +60,10 @@ export interface IBaseComponentReturnType<S extends IBaseState, H> {
   helper: H;
   currency: string;
   router: NextRouter;
+  isAuthenticated: boolean;
   setState: SetStateType<S>;
   pureSetState: SetPureStateType<S>;
+  dispatch: ReturnType<typeof useAppDispatch>;
 }
 
 export interface ICheckAuthenticationAfterLoginParams {

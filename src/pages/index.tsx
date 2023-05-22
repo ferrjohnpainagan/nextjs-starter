@@ -1,24 +1,13 @@
-import { HomeBody } from '@components/Home/Body/HomeBody';
-import { HomeHeader } from '@components/Home/Header/HomeHeader';
-import { HomeLayout } from '@components/Home/Layout/HomeLayout';
-import { TimeTracking } from '@components/Shared/TimeTracking/TimeTracking';
+import { HomeContainer } from 'src/containers/HomeContainer';
 
-export default function Home(props: { date: string }) {
-  const { date } = props;
-  return (
-    <HomeLayout>
-      <TimeTracking date={new Date(date)} />
-      <HomeHeader />
-      <HomeBody />
-    </HomeLayout>
-  );
+export default function Home() {
+  return <HomeContainer />;
 }
 
-export async function getServerSideProps({ locale }: { locale: string }) {
-  const date = new Date().toString();
+Home.needAuth = true;
+
+export async function getStaticProps() {
   return {
-    props: {
-      date,
-    },
+    props: {},
   };
 }

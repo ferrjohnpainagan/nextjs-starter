@@ -1,3 +1,5 @@
+import { useAuth } from '@hooks/useAuth';
+import { useAppDispatch } from '@redux/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
@@ -22,9 +24,9 @@ export const useBaseComponent = <
 
   const [state, pureSetState] = useState<S>(initialState);
   const router = useRouter();
-
+  const isAuthenticated = useAuth();
   const currency: string = process.env.CURRENCY ?? 'Dollar';
-
+  const dispatch = useAppDispatch();
   const setState = (newState: Partial<S>) => {
     pureSetState({
       ...state,
@@ -36,7 +38,9 @@ export const useBaseComponent = <
     props,
     state,
     router,
+    isAuthenticated,
     setState,
+    dispatch,
     pureSetState,
   });
 
@@ -46,6 +50,8 @@ export const useBaseComponent = <
     currency,
     router,
     setState,
+    dispatch,
+    isAuthenticated,
     pureSetState,
   };
 };
