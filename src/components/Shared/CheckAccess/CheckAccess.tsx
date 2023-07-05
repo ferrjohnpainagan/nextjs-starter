@@ -1,20 +1,15 @@
 import { useBaseComponent } from '@base/BaseComponent';
-import { ReactNode, useEffect } from 'react';
+import { useCheckAccessHelper } from './CheckAccessHelper';
+import { CheckAccessProps, CheckAccessState } from './CheckAccessType';
 
-export const CheckAccess = ({ children }: { children: ReactNode }) => {
-  const { router, isAuthenticated } = useBaseComponent();
-  useEffect(() => {
-    (async () => {
-      if (!isAuthenticated)
-        await router.push(`/login?return=${router.pathname}`);
-    })();
-  }, [isAuthenticated]);
+export const CheckAccess = (props: CheckAccessProps) => {
+  const { router, isAuthenticated } = useBaseComponent<
+    CheckAccessProps,
+    CheckAccessState,
+    ReturnType<typeof useCheckAccessHelper>
+  >({ props, helperHook: useCheckAccessHelper });
+  
+  const { children } = props;
 
-  return (
-    <>
-      {/* <PersistGate loading={<LinearProgress />} persistor={persistor}> */}
-      {isAuthenticated && <>{children}</>}
-      {/* </PersistGate> */}
-    </>
-  );
+  return <>{isAuthenticated && <>{children}</>}</>;
 };

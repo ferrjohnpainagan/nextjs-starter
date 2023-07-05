@@ -7,8 +7,7 @@ function login() {
   const { query } = router;
   if (isAuthenticated) {
     return router.back();
-    // or
-    // return router.push('/');
+   
   }
 
   const loginHandler = () => {

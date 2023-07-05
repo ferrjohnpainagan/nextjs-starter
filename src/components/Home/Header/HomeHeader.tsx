@@ -1,13 +1,20 @@
 import { useBaseComponent } from '@base/BaseComponent';
 import { ThemeSwitcher } from '@components/Shared/ThemeSwitcher/ThemeSwitcher';
-import { logoutUser } from '@redux/slices/authentication/AuthenticationSlice';
+import { useHomeHeader } from './HomeHeaderHelper';
 import { StyledHomeHeaderWrapper } from './HomeHeaderStyle';
+import { IHomeHeaderProps, IHomeHeaderState } from './HomeHeaderType';
 
-export const HomeHeader = () => {
-  const { dispatch } = useBaseComponent();
-  const logoutHandler = () => {
-    dispatch(logoutUser());
-  };
+export const HomeHeader = (props: IHomeHeaderProps) => {
+  const { helper } = useBaseComponent<
+    IHomeHeaderProps,
+    IHomeHeaderState,
+    ReturnType<typeof useHomeHeader>
+  >({
+    props,
+    helperHook: useHomeHeader,
+  });
+
+  const { logoutHandler } = helper;
 
   return (
     <StyledHomeHeaderWrapper>
