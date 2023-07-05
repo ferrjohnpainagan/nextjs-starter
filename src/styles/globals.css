@@ -11,11 +11,13 @@
 html.dark body {
   color: rgb(255, 255, 255);
   background: linear-gradient(to bottom, transparent, rgb(0, 0, 0)) rgb(0, 0, 0);
+  min-height: 100vh;
 }
 
 body {
   transition: background 200ms linear;
   color: rgb(0, 0, 0);
   background: linear-gradient(to bottom, transparent, rgb(255, 255, 255))
-    rgb(214, 219, 220);
+    rgb(255, 255, 255);
+  min-height: 100vh;
 }

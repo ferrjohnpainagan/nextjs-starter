@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export const StyledHomeHeaderWrapper = styled.div`
-  ${tw`z-10 w-full items-center justify-between font-mono text-sm lg:(flex justify-between items-center)`}
+  ${tw`z-10 w-full items-center justify-between font-mono p-5 text-sm lg:(flex justify-between items-center)`}
 `;
 export const StyledHomeHeaderTextWrapper = styled.div`
   ${tw`fixed left-0 top-0 flex gap-3 w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30`}

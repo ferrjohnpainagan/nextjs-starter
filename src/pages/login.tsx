@@ -18,8 +18,18 @@ function login() {
     }
   };
   return (
-    <div>
-      <button onClick={loginHandler}>Login</button>
+    <div className="w-full h-full flex justify-center items-center min-h-screen">
+      <div className="flex flex-col items-center gap-2">
+        <h2 className="text-[24px] font-bold">
+          Click to Bypass Authentication.
+        </h2>
+        <button
+          onClick={loginHandler}
+          className="bg-violet-500 rounded px-2 py-1 text-white font-semibold"
+        >
+          Login
+        </button>
+      </div>
     </div>
   );
 }
