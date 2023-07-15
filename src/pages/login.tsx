@@ -7,7 +7,6 @@ function login() {
   const { query } = router;
   if (isAuthenticated) {
     return router.back();
-   
   }
 
   const loginHandler = () => {
