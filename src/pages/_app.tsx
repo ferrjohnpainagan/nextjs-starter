@@ -1,4 +1,4 @@
-import { CheckAccess } from '@components/Shared/CheckAccess/CheckAccess';
+import { CheckAccess } from '@components/Auth/CheckAccess/CheckAccess';
 import { wrapper } from '@redux/store';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';

@@ -17,7 +17,6 @@ export const makeStore = ({ isServer }: any) => {
   if (typeof isServer === undefined || isServer) {
     isServer = typeof window === 'undefined';
   }
-
   if (isServer) {
     //If it's on server side, create a store
     return configureStore({
@@ -40,8 +39,7 @@ export const makeStore = ({ isServer }: any) => {
     /* istanbul ignore next */
     const persistedReducer = persistReducer(persistConfig, rootReducer); // Create a new reducer with our existing reducer
 
-    /* istanbul ignore next */
-    const store: any = configureStore({
+    const config = configureStore({
       reducer: persistedReducer,
       middleware: (getDefaultMiddleware: any) =>
         getDefaultMiddleware({
@@ -52,11 +50,16 @@ export const makeStore = ({ isServer }: any) => {
     });
 
     /* istanbul ignore next */
-    store.__persistor = persistStore(store);
+    const store = {
+      ...config,
+      __persistor: persistStore(config),
+    };
 
     /* istanbul ignore next */
     return store;
   }
 };
-
+type Store = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<Store['getState']>;
+export type AppDispatch = Store['dispatch'];
 export const wrapper = createWrapper<any>(makeStore);

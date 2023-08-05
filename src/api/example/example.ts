@@ -10,7 +10,7 @@ export const exampleApi = createApi({
     // first generic type is response type and seconde type is param type
     login: builder.mutation<any, any>({
       query: (data) => ({
-        url: '/create',
+        url: '/',
         method: 'POST',
         //todo create a base query to send authorization if it was true
         sendAuthorization: false,
@@ -18,7 +18,7 @@ export const exampleApi = createApi({
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        data: data,
+        data,
       }),
     }),
   }),
