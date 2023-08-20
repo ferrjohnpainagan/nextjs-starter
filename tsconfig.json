@@ -19,7 +19,6 @@
     "paths": {
       "@pages/*": ["pages/*"],
       "@containers/*": ["containers/*"],
-      "@icon/*": ["public/Icon/*"],
       "@image/*": ["public/images/*"],
       "@api/*": ["src/api/*"],
       "@base/*": ["src/base/*"],
@@ -28,9 +27,21 @@
       "@redux/*": ["src/redux/*"],
       "@type/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
-      "@validation/*": ["src/validation/*"]
-    }
+      "@validation/*": ["src/validation/*"],
+      "@styles/*": ["src/styles/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-i18next.config.js",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

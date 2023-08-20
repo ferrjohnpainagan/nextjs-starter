@@ -1,8 +1,10 @@
 import { CheckAccess } from '@components/Auth/CheckAccess/CheckAccess';
 import { wrapper } from '@redux/store';
+import '@styles/globals.css';
+import { StyledComponentsRegistry } from '@utils/Registry';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
-import '../styles/globals.css';
+import { GlobalStyles as BaseStyles } from 'twin.macro';
 
 type Props = AppProps;
 
@@ -14,9 +16,13 @@ export const App = ({ Component, ...props }: Props | any) => {
     : Page;
 
   return (
-    <ThemeProvider enableSystem={false} defaultTheme="dark" attribute="class">
-      {checkAuth(<Component {...pageProps} />)}
-    </ThemeProvider>
+    <StyledComponentsRegistry>
+      <ThemeProvider enableSystem={false} defaultTheme="dark" attribute="class">
+        <BaseStyles />
+
+        {checkAuth(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </StyledComponentsRegistry>
   );
 };
 
