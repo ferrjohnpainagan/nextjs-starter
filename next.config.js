@@ -1,5 +1,5 @@
-const withPWA = require('./src/utils/withPWA');
-const withTwin = require('./src/utils/withTwin');
+const withPWA = require('./withPWA');
+const withTwin = require('./withTwin');
 
 /**
  * @type {import('next').NextConfig}
