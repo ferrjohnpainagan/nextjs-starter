@@ -1,4 +1,4 @@
-import { useBaseComponent } from '@base/BaseComponent';
+import { useBaseComponent } from '@hooks/base/useBaseComponent';
 import { updateAuthState } from '@redux/slices/authentication/AuthenticationSlice';
 import { Url } from 'next/dist/shared/lib/router/router';
 

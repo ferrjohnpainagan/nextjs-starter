@@ -1,4 +1,4 @@
-import { useBaseComponent } from '@base/BaseComponent';
+import { useBaseComponent } from '@hooks/base/useBaseComponent';
 import { useCheckAccessHelper } from './CheckAccessHelper';
 import { CheckAccessProps, CheckAccessState } from './CheckAccessType';
 

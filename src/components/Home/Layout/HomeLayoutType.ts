@@ -1,3 +1,3 @@
-import { IBaseProps } from '@base/BaseInterface';
+import { IBaseProps } from '@hooks/base/BaseInterface';
 
 export interface IHomeLayoutProps extends IBaseProps {}

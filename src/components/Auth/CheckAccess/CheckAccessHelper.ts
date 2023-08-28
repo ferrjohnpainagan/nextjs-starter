@@ -1,4 +1,4 @@
-import { ICommonHelperParams } from '@base/BaseInterface';
+import { ICommonHelperParams } from '@hooks/base/BaseInterface';
 import { useEffect } from 'react';
 
 export const useCheckAccessHelper = (params: ICommonHelperParams) => {

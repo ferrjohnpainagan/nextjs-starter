@@ -1,5 +1,5 @@
-import { useBaseComponent } from '@base/BaseComponent';
 import { ThemeSwitcher } from '@components/Shared/ThemeSwitcher/ThemeSwitcher';
+import { useBaseComponent } from '@hooks/base/useBaseComponent';
 import { useHomeHeader } from './HomeHeaderHelper';
 import { StyledHomeHeaderWrapper } from './HomeHeaderStyle';
 import { IHomeHeaderProps, IHomeHeaderState } from './HomeHeaderType';

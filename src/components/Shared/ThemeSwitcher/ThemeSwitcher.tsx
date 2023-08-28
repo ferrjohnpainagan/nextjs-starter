@@ -1,4 +1,4 @@
-import { useBaseComponent } from '@base/BaseComponent';
+import { useBaseComponent } from '@hooks/base/useBaseComponent';
 import { useTheme } from 'next-themes';
 import { useThemeSwitcherHelper } from './ThemeSwitcherHelper';
 import {

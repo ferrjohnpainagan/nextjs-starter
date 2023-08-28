@@ -1,4 +1,4 @@
-import { ICommonHelperParams } from '@base/BaseInterface';
+import { ICommonHelperParams } from '@hooks/base/BaseInterface';
 import { logoutUser } from '@redux/slices/authentication/AuthenticationSlice';
 
 export const useHomeHeader = (params: ICommonHelperParams) => {
