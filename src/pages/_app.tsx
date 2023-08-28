@@ -4,7 +4,7 @@ import '@styles/globals.css';
 import { StyledComponentsRegistry } from '@utils/Registry';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
-import { GlobalStyles as BaseStyles } from 'twin.macro';
+import { GlobalStyles } from 'twin.macro';
 
 type Props = AppProps;
 
@@ -18,8 +18,7 @@ export const App = ({ Component, ...props }: Props | any) => {
   return (
     <StyledComponentsRegistry>
       <ThemeProvider enableSystem={false} defaultTheme="dark" attribute="class">
-        <BaseStyles />
-
+        <GlobalStyles />
         {checkAuth(<Component {...pageProps} />)}
       </ThemeProvider>
     </StyledComponentsRegistry>
